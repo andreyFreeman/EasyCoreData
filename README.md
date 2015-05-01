@@ -71,3 +71,13 @@ User.countOfEntities()
 Track.hasAtLeastOneEntity(predicate: NSPredicate(format: "album == %@", album))
 ```
 You can add additional params `predicate`, `inContext` if needed
+
+#### Get entity from other context
+
+```Swift
+let localObject = localContext.entityFromOtherContext(object)
+```
+or 
+```Swift
+let localUser = user.inContext(localContext) as? User
+```

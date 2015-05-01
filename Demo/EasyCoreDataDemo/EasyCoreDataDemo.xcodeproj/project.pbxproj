@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D6481F81AF2F41E008462B5 /* EasyCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6481F71AF2F41E008462B5 /* EasyCoreData.framework */; };
-		5D6481F91AF2F41E008462B5 /* EasyCoreData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6481F71AF2F41E008462B5 /* EasyCoreData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5D6A35DB1AF26F3000C11BBC /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6A35DA1AF26F3000C11BBC /* APIController.swift */; };
 		5D6A35DD1AF2CC3F00C11BBC /* Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6A35DC1AF2CC3F00C11BBC /* Mapping.swift */; };
 		5D6A35DF1AF2CC5400C11BBC /* Album+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6A35DE1AF2CC5400C11BBC /* Album+Mapping.swift */; };
@@ -53,7 +51,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5D6481F91AF2F41E008462B5 /* EasyCoreData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,7 +58,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5D6481F71AF2F41E008462B5 /* EasyCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = EasyCoreData.framework; path = "/Users/andreykladov/Library/Developer/Xcode/DerivedData/EasyCoreDataDemo-hivpnsxucfzqondcxlybkbzmtodt/Build/Products/Debug-iphoneos/EasyCoreData.framework"; sourceTree = "<absolute>"; };
 		5D6A35DA1AF26F3000C11BBC /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		5D6A35DC1AF2CC3F00C11BBC /* Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapping.swift; sourceTree = "<group>"; };
 		5D6A35DE1AF2CC5400C11BBC /* Album+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Album+Mapping.swift"; sourceTree = "<group>"; };
@@ -126,7 +122,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D6481F81AF2F41E008462B5 /* EasyCoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +231,6 @@
 		5DC68FFC1AEFE676003C3F03 = {
 			isa = PBXGroup;
 			children = (
-				5D6481F71AF2F41E008462B5 /* EasyCoreData.framework */,
 				5DC690071AEFE676003C3F03 /* EasyCoreDataDemo */,
 				5DC690061AEFE676003C3F03 /* Products */,
 			);
@@ -502,11 +496,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/andreykladov/Documents/EasyCoreData_Git/build/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/EasyCoreDataDemo-hivpnsxucfzqondcxlybkbzmtodt/Build/Products/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = EasyCoreDataDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -521,11 +511,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/andreykladov/Documents/EasyCoreData_Git/build/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/EasyCoreDataDemo-hivpnsxucfzqondcxlybkbzmtodt/Build/Products/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = EasyCoreDataDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

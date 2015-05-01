@@ -39,10 +39,11 @@ NSManagedObjectContext.saveDataInBackground({ localContext in
 ```Swift
 let user = NSManagedObjectContext.mainThreadContext.createEntity(User)
 ```
-or NSManagedObject class function, type cast is required
+or `NSManagedObject` class function, type cast is required
 ```Swift
 let user = User.createEntity() as! User
 ```
+You can add additional param `inContext` if needed here
 
 #### Fetching objects
 
@@ -62,3 +63,11 @@ let tracks = Track.findAll() as? [Track]
 ```Swift
 context.fetchObjectsAsynchronously(Movie.self, predicate: NSPredicate("artist == 'Christopher Nolan'", sortDescriptors: [NSSortDescriptor(key: "releaseDate", ascending: false)]) { movies in }
 ```
+
+#### Obtaining information about number of entities
+
+```Swift
+User.countOfEntities()
+Track.hasAtLeastOneEntity(predicate: NSPredicate(format: "album == %@", album))
+```
+You can add additional params `predicate`, `inContext` if needed

@@ -56,7 +56,7 @@ or
 let album = Album.findFirstOne() as? Album
 let tracks = Track.findAll() as? [Track]
 ```
-**predicate and sortDescriptors params here are optional** you can simply skip it
+`predicate` and `sortDescriptors` params here are optional you can simply skip it
 
 #### Asynchronous objects fetching (iOS 8+)
 
@@ -81,3 +81,13 @@ or
 ```Swift
 let localUser = user.inContext(localContext) as? User
 ```
+
+#### Aggregation operation
+
+```Swift
+let value = Album.aggregateOperation("max:", onAttribute: "trackCount")?.intValue {
+    println("Record track count in album is \(value)")
+}
+```
+you can add `predicate` and `inContext` parameters if needed
+

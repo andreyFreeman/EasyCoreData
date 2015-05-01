@@ -4,7 +4,9 @@
 
 # Integration
 
-Drag the EasyCoreData folder into your project. You can add sources only or add EasyCoreData project and use it as cocoa touch framework. 
+Drag the EasyCoreData folder into your project. You can add sources only or add EasyCoreData project and use it as cocoa touch framework.
+
+If you are doing integration with EasyCoreData as with Cocoa Touch framework do not forget to build EasyCoreData target before build and run your own project. To launch app which uses Cocoa Touch framework on the device you might need to add EasyCoreData.framework to 'embedded binaries' on Your_Project->General page
 
 # Setup
 

@@ -4,20 +4,20 @@
 
 # Integration
 
-Drag the EasyCoreData folder into your project. You can add sources only or add EasyCoreData project and use it as cocoa touch framework.
-
-If you are doing integration with EasyCoreData as with Cocoa Touch framework do not forget to build EasyCoreData target before build and run your own project. To launch app which uses Cocoa Touch framework on the device you might need to add EasyCoreData.framework to 'embedded binaries' on Your_Project->General page
+Drag the EasyCoreData folder into your project.
+Optionally you can use it as cocoa touch framework as it appears in the demo project.
+To launch app which uses Cocoa Touch framework on the device you might need to add EasyCoreData.framework to 'embedded binaries' on Your_Project->General page
 
 # Setup
 
-`EasyCoreData` don't required any setup. In most cases you may start to work as far as you have added it into your project.
-In some cases you may need to setup `sqliteStoreURL`, `modelName`, `modelURL`, `modelBundle` or `persistentStoreCoordinatorOptions` before start
+`EasyCoreData` don't required any setup and you can start to work as far as you have added it into your project.
+In some cases you may need to setup `sqliteStoreURL`, `modelName`, `modelURL`, `modelBundle` or `persistentStoreCoordinatorOptions` before you start
 
-Simply set values into EasyCoreData singleton class:
+Simply set values into EasyCoreData singleton class like this:
 
 `EasyCoreData.sharedInstance.modelName = "MyCustomModelName"`
 
-If you need to force seup all CoreData related properties you can call `EasyCoreData.sharedInstance.setup()` method, otherwise EasyCoreData will load all properties in lazy-load mode
+If you need to force setup all CoreData related properties you can call `EasyCoreData.sharedInstance.setup()` method, otherwise EasyCoreData will load all properties in lazy-load mode
 
 # Usage
 
@@ -32,7 +32,7 @@ NSManagedObjectContext.saveDataInBackground({ localContext in
 			album.mapFromJSONDict(dict, context: localContext)
 		  }
 	    }) {
-			completion?()
+			print("All done")
 	}
 ```
 
@@ -41,11 +41,14 @@ NSManagedObjectContext.saveDataInBackground({ localContext in
 ```Swift
 let user = NSManagedObjectContext.mainThreadContext.createEntity(User)
 ```
-or `NSManagedObject` class function, type cast is required
+or `NSManagedObject` class function, type cast is required this way
 ```Swift
 let user = User.createEntity() as! User
 ```
 You can add additional param `inContext` if needed here
+```Swift
+let user = User.createEntity(inContent: myContext) as! User
+```
 
 #### Fetching objects
 

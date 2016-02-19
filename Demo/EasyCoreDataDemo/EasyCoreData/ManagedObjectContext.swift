@@ -62,18 +62,20 @@ public extension NSManagedObjectContext {
 }
 
 public extension NSManagedObjectContext {
+    
     /**
      
-     Must be used for creation, updating or deletion of instances of NSManagedObject subclasses in the background. All changed will be merged into the mainThreadContext
+     Must be used for creation, updating or deletion of instances of NSManagedObject subclasses in the background. All changed will be saved to all parent contexts as well
      
      - parameter saveFunction: The function will be called to perform changes. All changes must be done in the localContext which is passed to this function as a parameter
      
      - parameter completion: The function will be called on the Main thread once save operation finished. Can update UI here
      
      */
-    class func saveDataInBackground(saveFunction: (localContext: NSManagedObjectContext) -> Void, completion: (() -> Void)?) {
-        let context = mainThreadContext.createChildContext(.PrivateQueueConcurrencyType)
-        context.performBlock { () -> Void in
+    
+    func saveDataInBackground(saveFunction: (localContext: NSManagedObjectContext) -> Void, completion: (() -> Void)?) {
+        let context = createChildContext(.PrivateQueueConcurrencyType)
+        context.performBlock {
             saveFunction(localContext: context)
             switch context.hasChanges {
             case true: context.saveWithCompletion(completion)
@@ -84,13 +86,26 @@ public extension NSManagedObjectContext {
     
     /**
      
+     Must be used for creation, updating or deletion of instances of NSManagedObject subclasses in the background. All changes will be saved to all parent contexts as well
+     
+     - parameter saveFunction: The function will be called to perform changes. All changes must be done in the localContext which is passed to this function as a parameter
+     
+     - parameter completion: The function will be called on the Main thread once save operation finished. Can update UI here
+     
+     */
+    class func saveDataInBackground(saveFunction: (localContext: NSManagedObjectContext) -> Void, completion: (() -> Void)?) {
+        mainThreadContext.saveDataInBackground(saveFunction, completion: completion)
+    }
+    
+    /**
+     
      Save current NSManagedObject state and merge changes into parent NSManagedObjectContent if exists
      
      - parameter completion: The function will be called once save operation finished
      
      */
     func saveWithCompletion(completion:(() -> Void)?) {
-        performBlock { () -> Void in
+        performBlock {
             do {
                 try self.save()
                 switch self.parentContext {
@@ -114,7 +129,7 @@ public extension NSManagedObjectContext {
      
      */
     class func saveDataWithBlock(saveFunction: () -> Void) {
-        mainThreadContext.performBlockAndWait { () -> Void in
+        mainThreadContext.performBlockAndWait {
             saveFunction()
             do { try self.mainThreadContext.save(); do {
                 try self.mainThreadContext.parentContext?.save()
@@ -223,7 +238,7 @@ public extension NSManagedObjectContext {
             if let res = result.finalResult as? [T] { results = res }
             completion?(results)
         }
-        performBlock { () -> Void in
+        performBlock {
             do {
                 try self.executeRequest(asyncRequest)
             } catch let error as NSError {

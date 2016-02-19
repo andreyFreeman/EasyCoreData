@@ -37,12 +37,28 @@
 		5D82D72A1AF3C1AC0092C708 /* Track+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D82D7291AF3C1AB0092C708 /* Track+Mapping.swift */; };
 		5D82D72C1AF3C3D80092C708 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D82D72B1AF3C3D80092C708 /* Track.swift */; };
 		5D82D72E1AF412370092C708 /* AlbumDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D82D72D1AF412370092C708 /* AlbumDetailsVC.swift */; };
+		5D86601D1C772B57004DC3E4 /* EasyCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8660161C772B57004DC3E4 /* EasyCoreData.framework */; };
+		5D86601E1C772B57004DC3E4 /* EasyCoreData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8660161C772B57004DC3E4 /* EasyCoreData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5D8660241C772B79004DC3E4 /* EasyCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D8660221C772B79004DC3E4 /* EasyCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5D8660291C772B9B004DC3E4 /* EasyCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8660261C772B9B004DC3E4 /* EasyCoreData.swift */; };
+		5D86602A1C772B9B004DC3E4 /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8660271C772B9B004DC3E4 /* ManagedObject.swift */; };
+		5D86602B1C772B9B004DC3E4 /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8660281C772B9B004DC3E4 /* ManagedObjectContext.swift */; };
 		5DC6900B1AEFE676003C3F03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC6900A1AEFE676003C3F03 /* AppDelegate.swift */; };
 		5DC690101AEFE676003C3F03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC6900E1AEFE676003C3F03 /* Main.storyboard */; };
 		5DC690121AEFE676003C3F03 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC690111AEFE676003C3F03 /* Images.xcassets */; };
 		5DC690151AEFE676003C3F03 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DC690131AEFE676003C3F03 /* LaunchScreen.xib */; };
 		5DC6902F1AEFE6F3003C3F03 /* EasyCoreDataDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DC6902D1AEFE6F3003C3F03 /* EasyCoreDataDemo.xcdatamodeld */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5D86601B1C772B57004DC3E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DC68FFD1AEFE676003C3F03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D8660151C772B57004DC3E4;
+			remoteInfo = EasyCoreData;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5D6481FA1AF2F41E008462B5 /* Embed Frameworks */ = {
@@ -51,6 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				5D86601E1C772B57004DC3E4 /* EasyCoreData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +125,12 @@
 		5D82D7291AF3C1AB0092C708 /* Track+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Track+Mapping.swift"; sourceTree = "<group>"; };
 		5D82D72B1AF3C3D80092C708 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		5D82D72D1AF412370092C708 /* AlbumDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumDetailsVC.swift; sourceTree = "<group>"; };
+		5D8660161C772B57004DC3E4 /* EasyCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D8660221C772B79004DC3E4 /* EasyCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyCoreData.h; sourceTree = "<group>"; };
+		5D8660231C772B79004DC3E4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D8660261C772B9B004DC3E4 /* EasyCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyCoreData.swift; sourceTree = "<group>"; };
+		5D8660271C772B9B004DC3E4 /* ManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
+		5D8660281C772B9B004DC3E4 /* ManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
 		5DC690051AEFE676003C3F03 /* EasyCoreDataDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyCoreDataDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC690091AEFE676003C3F03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC6900A1AEFE676003C3F03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,10 +141,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5D8660121C772B57004DC3E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DC690021AEFE676003C3F03 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D86601D1C772B57004DC3E4 /* EasyCoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,10 +259,23 @@
 			name = Mapping;
 			sourceTree = "<group>";
 		};
+		5D8660171C772B57004DC3E4 /* EasyCoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5D8660261C772B9B004DC3E4 /* EasyCoreData.swift */,
+				5D8660271C772B9B004DC3E4 /* ManagedObject.swift */,
+				5D8660281C772B9B004DC3E4 /* ManagedObjectContext.swift */,
+				5D8660221C772B79004DC3E4 /* EasyCoreData.h */,
+				5D8660231C772B79004DC3E4 /* Info.plist */,
+			);
+			path = EasyCoreData;
+			sourceTree = "<group>";
+		};
 		5DC68FFC1AEFE676003C3F03 = {
 			isa = PBXGroup;
 			children = (
 				5DC690071AEFE676003C3F03 /* EasyCoreDataDemo */,
+				5D8660171C772B57004DC3E4 /* EasyCoreData */,
 				5DC690061AEFE676003C3F03 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -240,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				5DC690051AEFE676003C3F03 /* EasyCoreDataDemo.app */,
+				5D8660161C772B57004DC3E4 /* EasyCoreData.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,7 +326,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		5D8660131C772B57004DC3E4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D8660241C772B79004DC3E4 /* EasyCoreData.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		5D8660151C772B57004DC3E4 /* EasyCoreData */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D86601F1C772B57004DC3E4 /* Build configuration list for PBXNativeTarget "EasyCoreData" */;
+			buildPhases = (
+				5D8660111C772B57004DC3E4 /* Sources */,
+				5D8660121C772B57004DC3E4 /* Frameworks */,
+				5D8660131C772B57004DC3E4 /* Headers */,
+				5D8660141C772B57004DC3E4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EasyCoreData;
+			productName = EasyCoreData;
+			productReference = 5D8660161C772B57004DC3E4 /* EasyCoreData.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		5DC690041AEFE676003C3F03 /* EasyCoreDataDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DC690241AEFE676003C3F03 /* Build configuration list for PBXNativeTarget "EasyCoreDataDemo" */;
@@ -294,6 +368,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5D86601C1C772B57004DC3E4 /* PBXTargetDependency */,
 			);
 			name = EasyCoreDataDemo;
 			productName = EasyCoreDataDemo;
@@ -306,9 +381,13 @@
 		5DC68FFD1AEFE676003C3F03 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Andrey Kladov";
 				TargetAttributes = {
+					5D8660151C772B57004DC3E4 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 					5DC690041AEFE676003C3F03 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -328,11 +407,19 @@
 			projectRoot = "";
 			targets = (
 				5DC690041AEFE676003C3F03 /* EasyCoreDataDemo */,
+				5D8660151C772B57004DC3E4 /* EasyCoreData */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5D8660141C772B57004DC3E4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DC690031AEFE676003C3F03 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -347,6 +434,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5D8660111C772B57004DC3E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D86602A1C772B9B004DC3E4 /* ManagedObject.swift in Sources */,
+				5D86602B1C772B9B004DC3E4 /* ManagedObjectContext.swift in Sources */,
+				5D8660291C772B9B004DC3E4 /* EasyCoreData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DC690011AEFE676003C3F03 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -387,6 +484,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5D86601C1C772B57004DC3E4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D8660151C772B57004DC3E4 /* EasyCoreData */;
+			targetProxy = 5D86601B1C772B57004DC3E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		5DC6900E1AEFE676003C3F03 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -407,6 +512,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5D8660201C772B57004DC3E4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EasyCoreData/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreyKladov.EasyCoreData;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5D8660211C772B57004DC3E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = EasyCoreData/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.andreyKladov.EasyCoreData;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		5DC690221AEFE676003C3F03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -428,6 +579,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -496,9 +648,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = EasyCoreDataDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.andreyKladov.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "EasyCoreDataDemo/EasyCoreDataDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -511,9 +665,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = EasyCoreDataDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.andreyKladov.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "EasyCoreDataDemo/EasyCoreDataDemo-Bridging-Header.h";
 			};
@@ -522,6 +678,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5D86601F1C772B57004DC3E4 /* Build configuration list for PBXNativeTarget "EasyCoreData" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D8660201C772B57004DC3E4 /* Debug */,
+				5D8660211C772B57004DC3E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		5DC690001AEFE676003C3F03 /* Build configuration list for PBXProject "EasyCoreDataDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

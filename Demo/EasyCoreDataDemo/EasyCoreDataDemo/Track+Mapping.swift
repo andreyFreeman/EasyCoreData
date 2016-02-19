@@ -11,10 +11,10 @@ import CoreData
 extension Track {
 	override func mapFromJSONDict(dict: JSONObject?, context: NSManagedObjectContext) {
 		super.mapFromJSONDict(dict, context: context)
-		title = valueFromJSONDict(dict, "trackName", "")
-		trackId = valueFromJSONDict(dict, "trackId", NSNumber(int: 0)).intValue
-		trackViewUrl = valueFromJSONDict(dict, "trackViewUrl", "")
-		previewUrl = valueFromJSONDict(dict, "previewUrl", "")
-		trackTimeMillis = valueFromJSONDict(dict, "trackTimeMillis", NSNumber(int: 0)).intValue
+		title = valueFromJSONDict(dict, key: "trackName", defaultValue: "")
+		trackId = valueFromJSONDict(dict, key: "trackId", defaultValue: NSNumber(int: 0)).intValue
+        trackViewUrl = valueFromJSONDict(dict, key: "trackViewUrl", defaultValue: "")
+        previewUrl = valueFromJSONDict(dict, key: "previewUrl", defaultValue: "")
+        trackTimeMillis = valueFromJSONDict(dict, key: "trackTimeMillis", defaultValue: NSNumber(int: 0)).intValue
 	}
 }

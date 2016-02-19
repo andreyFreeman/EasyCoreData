@@ -11,9 +11,9 @@ import CoreData
 extension Album {
 	override func mapFromJSONDict(dict: JSONObject?, context: NSManagedObjectContext) {
 		super.mapFromJSONDict(dict, context: context)
-		collectionId = valueFromJSONDict(dict, "collectionId", NSNumber(int: 0)).intValue
-		trackCount = valueFromJSONDict(dict, "trackCount", NSNumber(int: 0)).shortValue
-		title = valueFromJSONDict(dict, "collectionName", "")
-		collectionViewUrl = valueFromJSONDict(dict, "collectionViewUrl", "")
+		collectionId = valueFromJSONDict(dict, key: "collectionId", defaultValue: NSNumber(int: 0)).intValue
+		trackCount = valueFromJSONDict(dict, key: "trackCount", defaultValue: NSNumber(int: 0)).shortValue
+        title = valueFromJSONDict(dict, key: "collectionName", defaultValue: "")
+        collectionViewUrl = valueFromJSONDict(dict, key: "collectionViewUrl", defaultValue: "")
 	}
 }

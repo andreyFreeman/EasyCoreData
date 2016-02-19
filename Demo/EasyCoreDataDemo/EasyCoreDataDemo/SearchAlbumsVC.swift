@@ -37,7 +37,7 @@ class SearchAlbumsVC: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier(Consts.tableViewCell, forIndexPath: indexPath) as! UITableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier(Consts.tableViewCell, forIndexPath: indexPath)
 		let item = items?[indexPath.row]
 		(cell.contentView.viewWithTag(101) as? UILabel)?.text = item?.artist
 		(cell.contentView.viewWithTag(102) as? UILabel)?.text = item?.title
@@ -53,13 +53,13 @@ class SearchAlbumsVC: UITableViewController {
 			if let date = item?.releaseDate {
 				return value+" "+self.dateFormatter.stringFromDate(date)
 			}
-			return value+"-"
+			return value+" -"
 		}()
 		if let imageView = cell.contentView.viewWithTag(105) as? UIImageView {
 			if let url = item?.artworkUrl100 {
 				imageView.sd_setImageWithURL(NSURL(string: url)) { [weak imageView] _ in
-					imageView?.runFade(duration: 0.2)
-				}
+                    imageView?.runFade(0.2)
+                }
 			} else {
 				imageView.image = nil
 			}
@@ -72,7 +72,7 @@ class SearchAlbumsVC: UITableViewController {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		switch segue.identifier {
 		case .Some("GoAlbumDetails"):
-			if let row = tableView?.indexPathForSelectedRow()?.row {
+			if let row = tableView?.indexPathForSelectedRow?.row {
 				(segue.destinationViewController as? AlbumDetailsVC)?.album = items?[row]
 			}
 		default: break
@@ -87,7 +87,7 @@ extension SearchAlbumsVC: UISearchBarDelegate {
 	}
 	func searchBarSearchButtonClicked(searchBar: UISearchBar) {
 		searchBar.resignFirstResponder()
-		if count(searchTerm) > 0 {
+		if searchTerm.characters.count > 0 {
 			SVProgressHUD.showWithStatus(NSLocalizedString("Searching...", comment: ""), maskType: .Gradient)
 			APIController.sharedController.searchAlbumByTrackName(searchTerm, returnObjectOnCompletion: true) { albums, error in
 				SVProgressHUD.dismiss()

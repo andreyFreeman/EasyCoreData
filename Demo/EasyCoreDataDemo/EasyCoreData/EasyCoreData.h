@@ -2,8 +2,8 @@
 //  EasyCoreData.h
 //  EasyCoreData
 //
-//  Created by Andrey Kladov on 28/04/15.
-//  Copyright (c) 2015 Andrey Kladov. All rights reserved.
+//  Created by Andrey Kladov on 19/02/16.
+//  Copyright © 2016 Andrey Kladov. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -15,3 +15,5 @@ FOUNDATION_EXPORT double EasyCoreDataVersionNumber;
 FOUNDATION_EXPORT const unsigned char EasyCoreDataVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <EasyCoreData/PublicHeader.h>
+
+

@@ -9,15 +9,21 @@
 import CoreData
 import Foundation
 
-extension NSManagedObject {
-	func mapFromJSONDict(dict: JSONObject?, context: NSManagedObjectContext = NSManagedObjectContext.mainThreadContext) {
-	
-	}
+protocol MappableObject {
+    func mapFromJSONDict(dict: JSONObject?)
+}
+
+extension MappableObject where Self: NSManagedObject {
+    
+    func mapFromJSONDict(dict: JSONObject?) {
+        mapFromJSONDict(dict, context: NSManagedObjectContext.mainThreadContext)
+    }
+    
+    func mapFromJSONDict(dict: JSONObject?, context: NSManagedObjectContext) {
+        print("\(self).mapFromJSONDict(\(dict), context:(\(context)) isEmpty. Must be overriden in subclasses")
+    }
 }
 
 func valueFromJSONDict<T>(dict: JSONObject?, key: String, defaultValue: T!) -> T! {
-	if let value = dict?[key] as? T {
-		return value
-	}
-	return defaultValue
+    return dict?[key] as? T ?? defaultValue
 }

@@ -8,15 +8,15 @@
 
 import CoreData
 
-extension StoreMediaItem {
-	override func mapFromJSONDict(dict: JSONObject?, context: NSManagedObjectContext) {
-		artistId = valueFromJSONDict(dict, "artistId",  NSNumber(int: 0)).intValue
-		artist = valueFromJSONDict(dict, "artistName", "")
+extension StoreMediaItem: MappableObject {
+	func mapFromJSONDict(dict: JSONObject?, context: NSManagedObjectContext) {
+		artistId = valueFromJSONDict(dict, key: "artistId",  defaultValue: NSNumber(int: 0)).intValue
+		artist = valueFromJSONDict(dict, key: "artistName", defaultValue: "")
 		title = ""
-		artistViewUrl = valueFromJSONDict(dict, "artistViewUrl", "")
-		artworkUrl60 = valueFromJSONDict(dict, "artworkUrl60", "")
-		artworkUrl100 = valueFromJSONDict(dict, "artworkUrl100", "")
-		genre = valueFromJSONDict(dict, "primaryGenreName", "")
+		artistViewUrl = valueFromJSONDict(dict, key: "artistViewUrl", defaultValue: "")
+		artworkUrl60 = valueFromJSONDict(dict, key: "artworkUrl60", defaultValue: "")
+		artworkUrl100 = valueFromJSONDict(dict, key: "artworkUrl100", defaultValue: "")
+		genre = valueFromJSONDict(dict, key: "primaryGenreName", defaultValue: "")
 		let formatter = NSDateFormatter()
 		formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 		releaseDate = {

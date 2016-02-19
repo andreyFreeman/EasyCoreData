@@ -54,7 +54,7 @@ class AlbumDetailsVC: UITableViewController {
 		albumTitleLabel?.text = album?.title
 		genreLabel?.text = album?.genre
 		if let url = album?.artworkUrl100 {
-			coverImageView?.sd_setImageWithURL(NSURL(string: url)) { [weak self] _ in self?.coverImageView?.runFade(duration: 0.2) }
+			coverImageView?.sd_setImageWithURL(NSURL(string: url)) { [weak self] _ in self?.coverImageView?.runFade(0.2) }
 		} else {
 			coverImageView?.image = nil
 		}
@@ -72,7 +72,7 @@ class AlbumDetailsVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Consts.tableViewCell, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Consts.tableViewCell, forIndexPath: indexPath)
 		let track = items[indexPath.row]
 		(cell.contentView.viewWithTag(101) as? UILabel)?.text = "\(track.sortingOrder+1)."
 		(cell.contentView.viewWithTag(102) as? UILabel)?.text = track.title

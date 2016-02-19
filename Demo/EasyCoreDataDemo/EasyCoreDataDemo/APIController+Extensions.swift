@@ -24,7 +24,7 @@ extension APIController {
 			case (.None, .Some(let objects)):
 				NSManagedObjectContext.saveDataInBackground({ localContext in
 					Album.deleteAll(inContext: localContext)
-					for (index, dict) in enumerate(objects) {
+					for (index, dict) in objects.enumerate() {
 						let album = localContext.createEntity(Album)
 						album.mapFromJSONDict(dict, context: localContext)
 						album.sortingOrder = Int16(index)
@@ -46,8 +46,8 @@ extension APIController {
 			case (.None, .Some(let objects)):
 				NSManagedObjectContext.saveDataInBackground({ localContext in
 					if let localAlbum = localContext.entityFromOtherContext(album) {
-						Track.deleteAll(predicate: NSPredicate(format: "album == %@", localAlbum), inContext: localContext)
-						for (index, dict) in enumerate(objects.filter({ $0["wrapperType"] as? String == .Some("track") })) {
+						Track.deleteAll(NSPredicate(format: "album == %@", localAlbum), inContext: localContext)
+						for (index, dict) in objects.filter({ $0["wrapperType"] as? String == .Some("track") }).enumerate() {
 							let track = localContext.createEntity(Track)
 							track.mapFromJSONDict(dict, context: localContext)
 							track.sortingOrder = Int16(index)

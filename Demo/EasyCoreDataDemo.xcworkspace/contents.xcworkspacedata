@@ -4,7 +4,4 @@
    <FileRef
       location = "group:EasyCoreDataDemo/EasyCoreDataDemo.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:../EasyCoreData.xcodeproj">
-   </FileRef>
 </Workspace>

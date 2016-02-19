@@ -1,6 +1,6 @@
 # EasyCoreData
 
-`EasyCoreData` is a clean and simple way to start using CoreData in your iOS project.
+`EasyCoreData` it's a clean and simple way to start using CoreData in your iOS project.
 
 # Integration
 
@@ -96,3 +96,7 @@ let value = Album.aggregateOperation("max:", onAttribute: "trackCount")?.intValu
 ```
 you can add `predicate` and `inContext` parameters if needed
 
+You even can setup your own main NSManagedObjectContext and use all the fetching, creating, removing and aggregation stuff with your own solution. To achieve that you simply call
+```Swift
+NSManagedObjectContext.setupMainThreadManagedObjectContext(myContext)
+```

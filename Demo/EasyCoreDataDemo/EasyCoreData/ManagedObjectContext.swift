@@ -10,12 +10,35 @@ import Foundation
 import CoreData
 
 public extension NSManagedObjectContext {
+    
+    private struct StaticStorage {
+        static weak var customMainThreadManagedObjectContext: NSManagedObjectContext!
+    }
+    
     /**
      
-     main NSManagedObjectContext will be returned. See EasyCoreData.sharedInstance.mainThreadManagedObjectContext for more information
+     if you are going to use your own NSManagedObjectContext, but still want to use NSManagedObjectContext and NSManagedObject extensions, you can setup it here
+     **Warning! Weak reference will be stored. Stored NSManagedObjectContext will be overwritten by 'EasyCoreData.setup()' call**
+
+     - parameter context: context you would like to use as a main thread context with this EasyCoreData extensions. *
      
      */
-    class var mainThreadContext: NSManagedObjectContext! { return EasyCoreData.sharedInstance.mainThreadManagedObjectContext }
+    public class func setupMainThreadManagedObjectContext(context: NSManagedObjectContext!) {
+        StaticStorage.customMainThreadManagedObjectContext = context
+    }
+    
+}
+
+public extension NSManagedObjectContext {
+    /**
+     
+     Main NSManagedObjectContext will be returned. See EasyCoreData.sharedInstance.mainThreadManagedObjectContext for more information.
+     If method setupMainThreadManagedObjectContext was used, custom NSManagedObjectContext will be returned
+     
+     */
+    class var mainThreadContext: NSManagedObjectContext! {
+        return StaticStorage.customMainThreadManagedObjectContext ?? EasyCoreData.sharedInstance.mainThreadManagedObjectContext
+    }
     
     /**
      
@@ -30,11 +53,10 @@ public extension NSManagedObjectContext {
      
      Creates a new instance of NSManagedObject subclass with given type
      
-     :param: entity type of the objects needs to be fetched
-     :returns: optional object of given type T or nil
+     - returns: created object of given type T or nil
      
      */
-    func createEntity<T: NSManagedObject>(entity: T.Type) -> T! {
+    func createEntity<T: NSManagedObject>() -> T! {
         return T(entity: T.entityDescription(inContext: self), insertIntoManagedObjectContext: self)
     }
 }
@@ -44,9 +66,9 @@ public extension NSManagedObjectContext {
      
      Must be used for creation, updating or deletion of instances of NSManagedObject subclasses in the background. All changed will be merged into the mainThreadContext
      
-     :param: saveFunction The function will be called to perform changes. All changes must be done in the localContext which is passed to this function as a parameter
+     - parameter saveFunction: The function will be called to perform changes. All changes must be done in the localContext which is passed to this function as a parameter
      
-     :param: completion The function will be called on the Main thread once save operation finished. Can update UI here
+     - parameter completion: The function will be called on the Main thread once save operation finished. Can update UI here
      
      */
     class func saveDataInBackground(saveFunction: (localContext: NSManagedObjectContext) -> Void, completion: (() -> Void)?) {
@@ -64,7 +86,7 @@ public extension NSManagedObjectContext {
      
      Save current NSManagedObject state and merge changes into parent NSManagedObjectContent if exists
      
-     :param: completion The function will be called once save operation finished
+     - parameter completion: The function will be called once save operation finished
      
      */
     func saveWithCompletion(completion:(() -> Void)?) {
@@ -88,7 +110,7 @@ public extension NSManagedObjectContext {
      
      Must be used for creation, updating or deletion of NSManagedObject subclasses instances on the Main thread
      
-     :param: saveFunction The function will be called to perform changes
+     - parameter saveFunction: The function will be called to perform changes
      
      */
     class func saveDataWithBlock(saveFunction: () -> Void) {
@@ -113,9 +135,9 @@ public extension NSManagedObjectContext {
      
      Creates a new instance of NSManagedObjectContext which is child for the current one
      
-     :param: concurrencyType concurrency type of the new NSManagedObjectContext. The default value is MainQueueConcurrencyType
+     - parameter concurrencyType: concurrency type of the new NSManagedObjectContext. The default value is MainQueueConcurrencyType
      
-     :returns: a new instance is NSManagedObjectContext
+     - returns: a new instance is NSManagedObjectContext
      
      */
     func createChildContext(concurrencyType: NSManagedObjectContextConcurrencyType = .MainQueueConcurrencyType) -> NSManagedObjectContext {
@@ -130,10 +152,10 @@ public extension NSManagedObjectContext {
      
      Fetches the instances of NSManagedObject subclasses from CoreData storage
      
-     :param: entity type of the objects needs to be fetched
-     :param: predicate default values is nil
-     :param: sortDescriptors The default value is nil
-     :returns: array of objects given type T or empty array
+     - parameter entity: type of NSManagedObject subclass
+     - parameter predicate: default value is nil
+     - parameter sortDescriptors: default value is nil
+     - returns: array of objects given type T or empty array
      
      */
     func fetchObjects<T: NSManagedObject>(entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int? = nil, fetchBatchSize: Int? = nil) -> [T] {
@@ -155,10 +177,10 @@ public extension NSManagedObjectContext {
      
      Fetches the instance of NSManagedObject subclass from CoreData storage
      
-     :param: entity type of the objects needs to be fetched
-     :param: predicate default values is nil
-     :param: sortDescriptors The default value is nil
-     :returns: optional object or nil of given type T
+     - parameter entity: type of NSManagedObject subclass
+     - parameter predicate: default values is nil
+     - parameter sortDescriptors: The default value is nil
+     - returns: optional object or nil of given type T
      
      */
     func fetchFirstOne<T: NSManagedObject>(entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) -> T? {
@@ -171,8 +193,8 @@ public extension NSManagedObjectContext {
      
      Fetches NSManagedObject instance from other context in current
      
-     :param: entity The instance of NSManagedObject for lookup in context
-     :returns: The instance is NSManagedObject in the current context
+     - parameter entity: The instance of NSManagedObject for lookup in context
+     - returns: The instance is NSManagedObject in the current context
      
      */
     func entityFromOtherContext<T: NSManagedObject>(entity: T) -> T? {
@@ -186,10 +208,10 @@ public extension NSManagedObjectContext {
      
      Fetches the instances of NSManagedObject subclasses from CoreData storage asynchronously
      
-     :param: entity type of the objects needs to be fetched
-     :param: predicate default values is nil
-     :param: sortDescriptors The default value is nil
-     :returns: array of objects given type T or empty array
+     - parameter entity: type of the objects needs to be fetched
+     - parameter predicate: default values is nil
+     - parameter sortDescriptors: The default value is nil
+     - returns: array of objects given type T or empty array
      
      */
     func fetchObjectsAsynchronously<T: NSManagedObject>(entity: T.Type, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, completion: (([T]) -> Void)?) {

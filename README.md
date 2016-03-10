@@ -11,13 +11,15 @@ To launch app which uses Cocoa Touch framework on the device you might need to a
 # Setup
 
 `EasyCoreData` don't required any setup and you can start to work as far as you have added it into your project.
-In some cases you may need to setup `sqliteStoreURL`, `modelName`, `modelURL`, `modelBundle` or `persistentStoreCoordinatorOptions` before you start
+In some cases you may need to setup `sqliteStoreURL`, `modelName`, `modelURL`, `modelBundle` or `persistentStoreCoordinatorOptions` before you start. 
 
 Simply set values into EasyCoreData singleton class like this:
 
 `EasyCoreData.sharedInstance.modelName = "MyCustomModelName"`
 
 If you need to force setup all CoreData related properties you can call `EasyCoreData.sharedInstance.setup()` method, otherwise EasyCoreData will load all properties in lazy-load mode
+
+Making heavy-weight migration easy as it should be. Iterative. Both directions.
 
 # Usage
 
@@ -90,7 +92,7 @@ let localUser = user.inContext(localContext) as? User
 #### Aggregation operation
 
 ```Swift
-let value = Album.aggregateOperation("max:", onAttribute: "trackCount")?.intValue {
+if let value = Album.aggregateOperation("max:", onAttribute: "trackCount")?.intValue {
     println("Record track count in album is \(value)")
 }
 ```
@@ -101,3 +103,17 @@ You even can setup your own main NSManagedObjectContext and use all the fetching
 ```Swift
 NSManagedObjectContext.setupMainThreadManagedObjectContext(myContext)
 ```
+
+#Heavy-weight migration
+
+If heavy-weight data model migration is required you can setup and perform it with the following options:
+
+1. Setup proper persistent store options. Set `NSMigratePersistentStoresAutomaticallyOption` flag to `true` and do not use the `NSInferMappingModelAutomaticallyOption` flag (or set it to `false`)
+```Swift
+EasyCoreData.sharedInstance.persistentStoreCoordinatorOptions = [NSMigratePersistentStoresAutomaticallyOption: true]
+```
+2. Check `orderedModelsFileNames` and setup all existing model versions filenames. It will attempt to obtain *.momd folder and all the *.mom files inside it, sort by name starting with the value of `modelName` property. If it's not correct, setup it just like: ```Swift EasyCoreData.sharedInstance.orderedModelsFileNames = ["MyModel", "MyModel 2", "MyModel 3"]```
+3. Check and setup `modelBundles` if any custom bundles are used to contain the model (inside the framework, for instance). It needed to retrieve mapping models and merged model from bundles using store metadata. By defaults the value is `[self.modelBundle]`
+4. Create and setup your mapping model(s) and `NSEntityMigrationPolice`s
+5. If any additional setup must be done after the migration, you can use `postMigrationSetup` property. It will be called only if the migration is performed to the store
+6. Call `setup` or just try to use `NSManagedObjectContext`

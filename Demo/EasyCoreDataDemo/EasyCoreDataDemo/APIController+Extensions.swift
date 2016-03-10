@@ -55,7 +55,9 @@ extension APIController {
 						}
 					}
 					}) {
-						completion?(NSManagedObjectContext.mainThreadContext.fetchObjects(Track.self, sortDescriptors: [NSSortDescriptor(key: "sortingOrder", ascending: true)]), nil)
+                        completion?(NSManagedObjectContext.mainThreadContext.fetchObjects(Track.self,
+                            predicate: NSPredicate(format: "album == %@", album),
+                            sortDescriptors: [NSSortDescriptor(key: "sortingOrder", ascending: true)]), nil)
 				}
 			default: completion?(nil, self.defaultAPIError)
 			}

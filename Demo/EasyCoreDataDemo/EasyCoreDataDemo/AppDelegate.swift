@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import EasyCoreData
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		APIController.sharedController.baseURL = "https://itunes.apple.com"
+        EasyCoreData.sharedInstance.persistentStoreCoordinatorOptions = [
+            NSMigratePersistentStoresAutomaticallyOption: true,
+            NSSQLitePragmasOption: ["journal_mode": "delete"]
+        ]
 		return true
 	}
 

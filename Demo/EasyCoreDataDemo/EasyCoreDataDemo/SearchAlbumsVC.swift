@@ -84,6 +84,11 @@ class SearchAlbumsVC: UITableViewController {
 extension SearchAlbumsVC: UISearchBarDelegate {
 	func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
 		searchTerm = searchText
+        if searchText.characters.count == 0 {
+            items = []
+            tableView?.reloadData()
+            Album.deleteAll()
+        }
 	}
 	func searchBarSearchButtonClicked(searchBar: UISearchBar) {
 		searchBar.resignFirstResponder()

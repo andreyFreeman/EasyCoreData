@@ -1,6 +1,7 @@
 # EasyCoreData
 
 `EasyCoreData` it's a clean and simple way to start using CoreData in your iOS project.
+It makes heavyweight migration as easy as it should be. Iterative. In both directions.
 
 # Integration
 
@@ -18,8 +19,6 @@ Simply set values into EasyCoreData singleton class like this:
 `EasyCoreData.sharedInstance.modelName = "MyCustomModelName"`
 
 If you need to force setup all CoreData related properties you can call `EasyCoreData.sharedInstance.setup()` method, otherwise EasyCoreData will load all properties in lazy-load mode
-
-Making heavy-weight migration easy as it should be. Iterative. Both directions.
 
 # Usage
 
@@ -104,9 +103,9 @@ You even can setup your own main NSManagedObjectContext and use all the fetching
 NSManagedObjectContext.setupMainThreadManagedObjectContext(myContext)
 ```
 
-#Heavy-weight migration
+#Heavyweight migration
 
-If heavy-weight data model migration is required you can setup and perform it with the following options:
+If heavyweight data model migration is required you can setup and perform it with the following options:
 
 1. Setup proper persistent store options. Set `NSMigratePersistentStoresAutomaticallyOption` flag to `true` and do not use the `NSInferMappingModelAutomaticallyOption` flag (or set it to `false`)
 ```Swift
